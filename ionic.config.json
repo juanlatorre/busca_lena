@@ -1,0 +1,8 @@
+{
+  "name": "busca_lena",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "701c1b2e"
+}
