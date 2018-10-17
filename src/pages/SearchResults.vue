@@ -29,7 +29,6 @@
 </template>
 
 <script>
-let url = 'https://gist.githubusercontent.com/juanlatorre/5f75a9a66c5f8527b5aee37fc4514dd3/raw/48e94a2653beb35e6faf763c631b47c2b2a4fd3d/db_busca_lena.json'
 
 export default {
     name: 'PageSearchResults',
@@ -40,35 +39,18 @@ export default {
         }
     },
     created () {
-        if (typeof(this.$route.params.filtros) == 'undefined') {
+        if (typeof(this.$route.params.respuesta) == 'undefined') {
             this.busquedaExitosa = false
         } else {
-            this.$axios.get(url).then(response => {
-                let respuesta = this.multiFilter(response.data, this.$route.params.filtros)
-                if (respuesta.length > 0) {
-                    this.busquedaExitosa = true
-                    this.resultados = respuesta
-                    console.log(respuesta)
-                } else {
-                    this.busquedaExitosa = false
-                }
-            }).catch(error => {
-                console.log(error)
-            })
+            if (this.$route.params.respuesta.length > 0) {
+                this.busquedaExitosa = true
+                this.resultados = this.$route.params.respuesta
+            } else {
+                this.busquedaExitosa = false
+            }
         }
     },
     methods: {
-        multiFilter(arr, filters) {
-            const filterKeys = Object.keys(filters)
-            return arr.filter(eachObj => {
-                return filterKeys.every(eachKey => {
-                    if (!filters[eachKey].length) {
-                        return true; // passing an empty filter means that filter is ignored.
-                    }
-                    return filters[eachKey].includes(eachObj[eachKey]);
-                });
-            })
-        },
         llamar(telefono) {
             window.open("tel:"+telefono)
         }

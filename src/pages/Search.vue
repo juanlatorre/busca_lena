@@ -45,12 +45,29 @@
 
 <script>
 
+let url = 'https://gist.githubusercontent.com/juanlatorre/5f75a9a66c5f8527b5aee37fc4514dd3/raw/48e94a2653beb35e6faf763c631b47c2b2a4fd3d/db_busca_lena.json'
+
 let filtros = {
     certificada: [],
     presentacion: [],
     color: [],
     cortador: []
 }
+
+let respuesta = ''
+
+function multiFilter(arr, filters) {
+    const filterKeys = Object.keys(filters)
+    return arr.filter(eachObj => {
+        return filterKeys.every(eachKey => {
+            if (!filters[eachKey].length) {
+                return true; // passing an empty filter means that filter is ignored.
+            }
+            return filters[eachKey].includes(eachObj[eachKey]);
+        });
+    })
+}
+
 
 export default {
     name: 'PageSearch',
@@ -120,6 +137,16 @@ export default {
     },
     methods: {
         startSearch() {
+            this.$q.loading.show()
+
+            // reset filtros
+            filtros = {
+                certificada: [],
+                presentacion: [],
+                color: [],
+                cortador: []
+            }
+
             if (this.certificacionSelect != "all") {
                 filtros.certificada[0] = this.certificacionSelect
             }
@@ -136,10 +163,20 @@ export default {
                 filtros.cortador[0] = this.cortadorSelect
             }
 
-            this.$router.replace({
-                name: 'search_results',
-                params: { filtros }
+            this.$axios.get(url).then(response => {
+                respuesta = multiFilter(response.data, filtros)
+            }).catch(error => {
+                console.log(error)
             })
+
+            
+            setTimeout(() => {
+                this.$q.loading.hide()
+                this.$router.replace({
+                    name: 'search_results',
+                    params: { respuesta }
+                })
+            }, 1500)
         }
     }
 }

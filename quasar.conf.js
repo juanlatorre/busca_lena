@@ -70,6 +70,7 @@ module.exports = function (ctx) {
             // Quasar plugins
             plugins: [
                 'Notify',
+                'Loading'
             ],
             config: {
                 cordova: {
