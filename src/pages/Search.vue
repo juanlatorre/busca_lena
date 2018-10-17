@@ -176,7 +176,7 @@ export default {
                     name: 'search_results',
                     params: { respuesta }
                 })
-            }, 1500)
+            }, 1000)
         }
     }
 }

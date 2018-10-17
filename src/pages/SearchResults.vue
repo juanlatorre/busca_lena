@@ -9,7 +9,7 @@
                     </q-card-title>
                     <q-card-actions class="flex row justify-around">
                         <q-btn icon="phone" label="Llamar" @click="llamar(resultado.telefono)" flat/>
-                        <q-btn icon="favorite" label="Guardar" flat/>
+                        <!-- <q-btn icon="favorite" label="Guardar" flat/> -->
                     </q-card-actions>
                 </q-card>
             </div>
