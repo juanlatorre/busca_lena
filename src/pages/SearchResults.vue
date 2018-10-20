@@ -45,6 +45,7 @@ export default {
             if (this.$route.params.respuesta.length > 0) {
                 this.busquedaExitosa = true
                 this.resultados = this.$route.params.respuesta
+                console.log(this.$route.params.respuesta[0])
             } else {
                 this.busquedaExitosa = false
             }

@@ -44,9 +44,6 @@
 </template>
 
 <script>
-
-let url = 'https://gist.githubusercontent.com/juanlatorre/5f75a9a66c5f8527b5aee37fc4514dd3/raw/48e94a2653beb35e6faf763c631b47c2b2a4fd3d/db_busca_lena.json'
-
 let filtros = {
     certificada: [],
     presentacion: [],
@@ -168,17 +165,16 @@ export default {
                 querySnapshot.forEach((doc) => {
                     datos.push(doc.data())
                 })
-            })
 
-            respuesta = this.multiFilter(datos, filtros)
-            console.log(respuesta)
+                respuesta = multiFilter(datos, filtros)
+            })
 
             setTimeout(() => {
                 this.$q.loading.hide()
-                //this.$router.replace({
-                //    name: 'search_results',
-                //    params: { respuesta }
-                //})
+                this.$router.replace({
+                    name: 'search_results',
+                    params: { respuesta }
+                })
             }, 1000)
         }
     }
