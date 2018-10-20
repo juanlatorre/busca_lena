@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cordova": "^8.1.2",
+    "firebase": "^5.5.4",
     "global": "^4.3.2"
   },
   "devDependencies": {

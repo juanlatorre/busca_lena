@@ -68,7 +68,6 @@ function multiFilter(arr, filters) {
     })
 }
 
-
 export default {
     name: 'PageSearch',
     data() {
@@ -163,19 +162,23 @@ export default {
                 filtros.cortador[0] = this.cortadorSelect
             }
 
-            this.$axios.get(url).then(response => {
-                respuesta = multiFilter(response.data, filtros)
-            }).catch(error => {
-                console.log(error)
+            let datos = []
+
+            this.$db.collection("vendedores").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    datos.push(doc.data())
+                })
             })
 
-            
+            respuesta = this.multiFilter(datos, filtros)
+            console.log(respuesta)
+
             setTimeout(() => {
                 this.$q.loading.hide()
-                this.$router.replace({
-                    name: 'search_results',
-                    params: { respuesta }
-                })
+                //this.$router.replace({
+                //    name: 'search_results',
+                //    params: { respuesta }
+                //})
             }, 1000)
         }
     }
