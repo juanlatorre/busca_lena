@@ -39,13 +39,13 @@ export default {
         }
     },
     created () {
-        if (typeof(this.$route.params.respuesta) == 'undefined') {
+        if (typeof(this.$route.params.datos) == 'undefined') {
             this.busquedaExitosa = false
         } else {
-            if (this.$route.params.respuesta.length > 0) {
+            if (this.$route.params.datos.length > 0) {
                 this.busquedaExitosa = true
-                this.resultados = this.$route.params.respuesta
-                console.log(this.$route.params.respuesta[0])
+                this.resultados = this.$route.params.datos
+                console.log(this.$route.params.datos[0])
             } else {
                 this.busquedaExitosa = false
             }

@@ -44,27 +44,6 @@
 </template>
 
 <script>
-let filtros = {
-    certificada: [],
-    presentacion: [],
-    color: [],
-    cortador: []
-}
-
-let respuesta = ''
-
-function multiFilter(arr, filters) {
-    const filterKeys = Object.keys(filters)
-    return arr.filter(eachObj => {
-        return filterKeys.every(eachKey => {
-            if (!filters[eachKey].length) {
-                return true; // passing an empty filter means that filter is ignored.
-            }
-            return filters[eachKey].includes(eachObj[eachKey]);
-        });
-    })
-}
-
 export default {
     name: 'PageSearch',
     data() {
@@ -134,48 +113,55 @@ export default {
     methods: {
         startSearch() {
             this.$q.loading.show()
-
-            // reset filtros
-            filtros = {
-                certificada: [],
-                presentacion: [],
-                color: [],
-                cortador: []
-            }
+			
+			const Vendedor = this.$parse.Object.extend("Vendedor")
+			const query = new this.$parse.Query(Vendedor)
+			const dis = this
+			var datos = []
 
             if (this.certificacionSelect != "all") {
-                filtros.certificada[0] = this.certificacionSelect
+				query.equalTo("certificada", this.certificacionSelect)
             }
 
             if (this.presentacionSelect != "all") {
-                filtros.presentacion[0] = this.presentacionSelect
+				query.equalTo("presentacion", this.presentacionSelect)
             }
 
             if (this.colorSelect != "all") {
-                filtros.color[0] = this.colorSelect
+				query.equalTo("color", this.colorSelect)
             }
 
             if (this.cortadorSelect != "all") {
-                filtros.cortador[0] = this.cortadorSelect
+				query.equalTo("cortador", this.cortadorSelect)
             }
-
-            let datos = []
-
-            this.$db.collection("vendedores").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    datos.push(doc.data())
-                })
-
-                respuesta = multiFilter(datos, filtros)
-            })
-
-            setTimeout(() => {
-                this.$q.loading.hide()
-                this.$router.replace({
-                    name: 'search_results',
-                    params: { respuesta }
-                })
-            }, 1000)
+			
+			query.descending("notaUsuarios");
+			const results = query.find()
+			results.then(function(data) {
+				for (let i = 0; i < data.length; i++) {
+				 	var object = data[i];
+					datos.push({
+						certificada: object.get("certificada"),
+						color: object.get("color"),
+						cortador: object.get("cortador"),
+						direccion: object.get("direccion"),
+						nombre: object.get("nombre"),
+						notaUsuarios: object.get("notaUsuarios"),
+						presentacion: object.get("presentacion"),
+						telefono: object.get("telefono"),
+						vecesContactado: object.get("vecesContactado"),
+						vecesGuardado: object.get("vecesGuardado")
+					})
+				}
+				
+	            setTimeout(() => {
+	                dis.$q.loading.hide()
+	                dis.$router.push({
+						name: 'search_results',
+						params: { datos }
+					})
+	            }, 1000)
+			})
         }
     }
 }

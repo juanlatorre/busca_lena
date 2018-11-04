@@ -45,6 +45,39 @@
 
 <script>
 export default {
-  name: 'PageIndex',
+    name: 'PageIndex',
+	methods: {
+		createDB() { //Function only for testing
+			var Vendedor = this.$parse.Object.extend("Vendedor")
+			
+			function crearVendedor(cert, col, cor, dir, nom, nota, pres, tel, vcon, vgua) {
+				var v = new Vendedor()
+				v.set("certificada", cert)
+				v.set("color", col)
+				v.set("cortador", cor)
+				v.set("direccion", dir)
+				v.set("nombre", nom)
+				v.set("notaUsuarios", nota)
+				v.set("presentacion", pres)
+				v.set("telefono", tel)
+				v.set("vecesContactado", vcon)
+				v.set("vecesGuardado", vgua)
+				v.save()
+			}
+			
+			crearVendedor(true, "blanca", false, "Suecia 321", "Vendedor A", 0, "saco", 12345678, 0, 0)
+			crearVendedor(true, "blanca", true, "Suecia 321", "Vendedor B", 0, "metro", 12345678, 0, 0)
+			crearVendedor(true, "blanca", false, "Suecia 321", "Vendedor C", 0, "metro", 12345678, 0, 0)
+			crearVendedor(false, "blanca", false, "Suecia 321", "Vendedor D", 0, "saco", 12345678, 0, 0)
+			crearVendedor(false, "blanca", true, "Suecia 321", "Vendedor E", 0, "metro", 12345678, 0, 0)
+			crearVendedor(false, "blanca", false, "Suecia 321", "Vendedor F", 0, "metro", 12345678, 0, 0)
+			crearVendedor(true, "roja", false, "Suecia 321", "Vendedor G", 0, "saco", 12345678, 0, 0)
+			crearVendedor(true, "roja", true, "Suecia 321", "Vendedor H", 0, "metro", 12345678, 0, 0)
+			crearVendedor(true, "roja", false, "Suecia 321", "Vendedor I", 0, "metro", 12345678, 0, 0)
+			crearVendedor(false, "roja", false, "Suecia 321", "Vendedor J", 0, "saco", 12345678, 0, 0)
+			crearVendedor(false, "roja", true, "Suecia 321", "Vendedor K", 0, "metro", 12345678, 0, 0)
+			crearVendedor(false, "roja", false, "Suecia 321", "Vendedor L", 0, "metro", 12345678, 0, 0)
+		}
+	}
 };
 </script>
