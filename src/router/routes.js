@@ -9,16 +9,22 @@ const routes = [
                 component: () => import('pages/Index.vue')
             },
             {
-                path: 'search',
+                path: '/search',
                 component: () => import('pages/Search.vue')
             },
             {
-                path: '/search_results',
-                name: 'search_results',
+                path: '/results',
+                name: 'results',
                 component: () => import('pages/SearchResults.vue')
             }
         ],
     },
+	{
+		path: '/search',
+		component: () => import('layouts/NavLayout.vue'),
+		children: [
+		]
+	}
 ];
 
 // Always leave this as last one

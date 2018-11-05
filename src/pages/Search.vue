@@ -157,10 +157,10 @@ export default {
 	            setTimeout(() => {
 	                dis.$q.loading.hide()
 	                dis.$router.push({
-						name: 'search_results',
+						name: 'results',
 						params: { datos }
 					})
-	            }, 1000)
+	            }, 200)
 			})
         }
     }
