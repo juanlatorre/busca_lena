@@ -1,5 +1,5 @@
 <template>
-    <q-page>
+    <q-page padding>
         <template v-if="busquedaExitosa == true">
             <div v-for="resultado in resultados">
                 <q-card class="q-ma-sm">
@@ -8,7 +8,7 @@
                         <span slot="subtitle">
 							<q-icon name="location_on"/>{{ resultado.direccion }}
 							<br>
-							<!-- ><q-rating size="1.5rem" color="warning" v-model="resultado.notaUsuarios" :max="5" icon="star" readonly /> -->
+							<!--<q-rating size="1.5rem" color="warning" v-model="resultado.notaUsuarios" :max="5" icon="star" readonly /> -->
 						</span>
                     </q-card-title>
                     <q-card-actions class="flex row justify-around">

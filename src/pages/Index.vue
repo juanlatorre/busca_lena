@@ -5,10 +5,11 @@
 		<q-btn
             class="flex-item no-shadow"
             size="xl"
-            style="background: #b8e994; color: white; width: 60%;"
-            label="Buscar Leña"
+            style="background: #3b5998; color: white; width: 60%;"
+            label="Iniciar Sesión"
             rounded
             no-caps
+			icon="fab fa-facebook"
             @click="$router.replace('/search')"
         />
 	</q-page>
