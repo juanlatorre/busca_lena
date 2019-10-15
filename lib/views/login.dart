@@ -12,23 +12,19 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomPaint(
-        painter: LoginBackground(),
-        child: SafeArea(
-          child: Center(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: CustomPaint(
+          painter: LoginBackground(),
+          child: SafeArea(
             child: CustomPaint(
               painter: LoginBox(),
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'You have pushed the button this many times:',
-                    ),
-                  ],
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("e"),
+                ],
               ),
             ),
           ),
