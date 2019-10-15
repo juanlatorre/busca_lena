@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoginPainter extends CustomPainter {
+class LoginBackground extends CustomPainter {
   final Gradient gradient = SweepGradient(colors: <Color>[
     Colors.green.withOpacity(1),
     Colors.orange.withOpacity(1),
