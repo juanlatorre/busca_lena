@@ -3,8 +3,6 @@ import 'package:flutter/widgets.dart';
 
 Widget inputBox(String hint) {
   return Container(
-    margin:
-        hint == "Correo" ? EdgeInsets.only(top: 100) : EdgeInsets.only(top: 25),
     width: 250,
     child: TextFormField(
       keyboardType:
