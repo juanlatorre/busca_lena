@@ -9,6 +9,8 @@ module.exports = {
         alias: {
           "@components": "./src/components",
           "@views": "./src/views",
+          "@images": "./src/images",
+          "@theme": "./src/theme.ts",
         },
       },
     ],
