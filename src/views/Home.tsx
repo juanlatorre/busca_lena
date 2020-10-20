@@ -1,7 +1,7 @@
 import styled, { css } from "@emotion/native";
 import React, { FC } from "react";
 import { ImageBackground } from "react-native";
-import { Div, ScrollDiv, Text } from "react-native-magnus";
+import { Div, Icon, ScrollDiv, Text } from "react-native-magnus";
 import { theme } from "theme";
 import PatternHero from "@images/pattern_hero.png";
 
@@ -23,13 +23,12 @@ export const Home: FC = () => {
         `}
       >
         <Div
-          bg="blue"
+          bg="yellow"
           h={200}
-          w="100%"
           justifyContent="space-between"
           alignItems="center"
           flexDir="row"
-          roundedBottom="2xl"
+          roundedBottom={20}
         >
           <ImageBackground
             source={PatternHero}
@@ -40,18 +39,94 @@ export const Home: FC = () => {
             style={css`
               width: 100%;
               height: 100%;
+              overflow: hidden;
+              border-bottom-left-radius: 20px;
+              border-bottom-right-radius: 20px;
             `}
           />
         </Div>
 
-        <Div bg="white" flex={1} w="93%" px="lg" roundedTop="2xl" mt={-80}>
-          <Text bg="red" h={300}>
-            Hola
-          </Text>
+        <Div
+          bg="white"
+          w="93%"
+          h={150}
+          px="lg"
+          rounded="2xl"
+          mt={-80}
+          mb={15}
+          shadow="md"
+          flexDir="row"
+          justifyContent="space-between"
+        >
+          <Text>we</Text>
+          <Div flexDir="row">
+            <Icon
+              name="star"
+              color="yellow"
+              fontSize="title"
+              fontFamily="FontAwesome"
+            />
+            <Icon
+              name="star"
+              color="yellow"
+              fontSize="title"
+              fontFamily="FontAwesome"
+            />
+            <Icon
+              name="star"
+              color="yellow"
+              fontSize="title"
+              fontFamily="FontAwesome"
+            />
+            <Icon
+              name="star"
+              color="gray"
+              fontSize="title"
+              fontFamily="FontAwesome"
+            />
+            <Icon
+              name="star"
+              color="gray"
+              fontSize="title"
+              fontFamily="FontAwesome"
+            />
+          </Div>
+        </Div>
 
-          <Text bg="black" h={300}>
-            Hola
-          </Text>
+        <Div
+          bg="white"
+          w="93%"
+          h={150}
+          px="lg"
+          rounded="2xl"
+          mb={15}
+          shadow="md"
+        >
+          <Text>we</Text>
+        </Div>
+
+        <Div
+          bg="white"
+          w="93%"
+          h={150}
+          px="lg"
+          rounded="2xl"
+          mb={15}
+          shadow="md"
+        >
+          <Text>we</Text>
+        </Div>
+
+        <Div
+          bg="white"
+          w="93%"
+          h={150}
+          px="lg"
+          rounded="2xl"
+          mb={15}
+          shadow="md"
+        >
+          <Text>we</Text>
         </Div>
       </ScrollDiv>
     </SafeArea>

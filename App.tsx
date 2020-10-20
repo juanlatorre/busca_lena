@@ -11,7 +11,7 @@ import { theme } from "@theme";
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <StatusBar translucent />
+      <StatusBar backgroundColor={theme.colors.yellow} translucent />
       <Home />
     </ThemeProvider>
   );
